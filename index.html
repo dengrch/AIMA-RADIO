@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AIMA RADIO">
+    <title>AIMA RADIO</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-head">
+      <h1 id="site-title">AIMA RADIO</h1>
+      <div class="head-row">
+        <nav aria-label="site">
+          <a href="#archive" data-i18n="navArchive">archive</a>
+          <a href="#text" data-i18n="navText">text</a>
+          <a href="#photos" data-i18n="navPhotos">photos</a>
+        </nav>
+        <div class="switches">
+          <div class="theme-switch" aria-label="theme">
+            <button type="button" data-theme="light" aria-pressed="true" data-i18n="themeLight">light</button>
+            <button type="button" data-theme="dark" aria-pressed="false" data-i18n="themeDark">dark</button>
+          </div>
+          <div class="lang-switch" aria-label="language">
+            <button type="button" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-lang="zh" aria-pressed="false">中</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="signal" id="listen" aria-label="current audio">
+        <div class="signal-title">
+          <p id="episode-date"></p>
+          <h2 id="episode-title"></h2>
+        </div>
+
+        <div class="player" data-player>
+          <audio id="audio" preload="metadata"></audio>
+          <button class="play-button" id="play-toggle" type="button" aria-label="Play">PLAY</button>
+          <div class="progress-wrap">
+            <div class="progress-text" id="progress-text" aria-hidden="true"></div>
+            <input id="seek" type="range" min="0" max="100" value="0" step="0.01" aria-label="Seek audio">
+          </div>
+          <time id="current-time">00:00</time>
+          <time id="duration">00:00</time>
+        </div>
+      </section>
+
+      <section class="entry" id="text" aria-labelledby="entry-title">
+        <p class="label" data-i18n="labelText">text</p>
+        <h2 id="entry-title"></h2>
+        <div class="entry-body" id="entry-body"></div>
+      </section>
+
+      <section class="photos" id="photos" aria-label="episode photos"></section>
+
+      <section class="archive" id="archive" aria-label="archive">
+        <p class="label" data-i18n="labelArchive">archive</p>
+        <div class="episode-list" id="episode-list"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
