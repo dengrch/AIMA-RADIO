@@ -28,7 +28,7 @@ const copy = {
 const episodes = [
   {
     id: "sazanami",
-    audio: "assets/audio/sazanami.m4a",
+    audio: "https://github.com/dengrch/AIMA-RADIO/releases/download/v1.0.0-beta/20260125-Sazanami.mp3",
     durationLabel: "07:41",
     photos: [
       "assets/images/sazanami-01.jpg",
