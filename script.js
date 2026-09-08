@@ -50,7 +50,7 @@ let recommendationIndex = 0;
 let recommendationTimer = 0;
 let scrubbing = false;
 let playbackRequest = 0;
-let brandSection = 'RADIO';
+let brandSection = 'Radio';
 let brandAnimation = null;
 let sectionFrame = 0;
 
@@ -330,19 +330,19 @@ function setActiveNav(category = '') {
 
 function route({ preserveScroll = false } = {}) {
   if (!preserveScroll) hideViews();
-  const hash = location.hash || '#main'; const parts = hash.slice(1).split('/'); let title = 'aima RADIO'; let focus = null;
+  const hash = location.hash || '#main'; const parts = hash.slice(1).split('/'); let title = 'aima Radio'; let focus = null;
   if (parts[0] === 'news' && ['radio', 'demo', 'track', 'note'].includes(parts[1])) {
-    archiveCategory = parts[1]; if (!preserveScroll) archiveYear = 'all'; $('#news-view').hidden = false; renderArchive(); setBrandContext(archiveCategory); setActiveNav(archiveCategory); title = `${archiveCategory} — aima RADIO`;
+    archiveCategory = parts[1]; if (!preserveScroll) archiveYear = 'all'; $('#news-view').hidden = false; renderArchive(); setBrandContext(archiveCategory); setActiveNav(archiveCategory); title = `${archiveCategory} — aima Radio`;
   } else if (parts[0] === 'episode') {
-    const item = episodes.find(value => value.id === parts[1]); if (item) { $('#episode-view').hidden = false; renderEpisode(item); setBrandContext('radio'); setActiveNav('radio'); title = `${item[lang].title} — aima RADIO`; focus = $('#episode-title'); } else $('#not-found').hidden = false;
+    const item = episodes.find(value => value.id === parts[1]); if (item) { $('#episode-view').hidden = false; renderEpisode(item); setBrandContext('radio'); setActiveNav('radio'); title = `${item[lang].title} — aima Radio`; focus = $('#episode-title'); } else $('#not-found').hidden = false;
   } else if (parts[0] === 'demo') {
-    const item = demos.find(value => value.id === parts[1]); if (item) { $('#demo-view').hidden = false; renderDemo(item); setBrandContext('demo'); setActiveNav('demo'); title = `${item.title} — aima RADIO`; focus = $('#demo-title'); } else $('#not-found').hidden = false;
+    const item = demos.find(value => value.id === parts[1]); if (item) { $('#demo-view').hidden = false; renderDemo(item); setBrandContext('demo'); setActiveNav('demo'); title = `${item.title} — aima Radio`; focus = $('#demo-title'); } else $('#not-found').hidden = false;
   } else if (parts[0] === 'track') {
-    const item = tracks.find(value => value.id === parts[1]); if (item) { $('#track-view').hidden = false; renderTrack(item); setBrandContext('track'); setActiveNav('track'); title = `${item.title} — aima RADIO`; focus = $('#track-title'); } else $('#not-found').hidden = false;
+    const item = tracks.find(value => value.id === parts[1]); if (item) { $('#track-view').hidden = false; renderTrack(item); setBrandContext('track'); setActiveNav('track'); title = `${item.title} — aima Radio`; focus = $('#track-title'); } else $('#not-found').hidden = false;
   } else if (parts[0] === 'note') {
-    const item = notes.find(value => value.id === parts[1]); if (item) { $('#note-view').hidden = false; renderNote(item); setBrandContext('note'); setActiveNav('note'); title = `${item[lang].title} — aima RADIO`; focus = $('#note-title'); } else $('#not-found').hidden = false;
+    const item = notes.find(value => value.id === parts[1]); if (item) { $('#note-view').hidden = false; renderNote(item); setBrandContext('note'); setActiveNav('note'); title = `${item[lang].title} — aima Radio`; focus = $('#note-title'); } else $('#not-found').hidden = false;
   } else {
-    $('#home-view').hidden = false; setBrandContext('RADIO'); setActiveNav(''); renderHomeNews(); renderRecommendations();
+    $('#home-view').hidden = false; setBrandContext('Radio'); setActiveNav(''); renderHomeNews(); renderRecommendations();
     if (!preserveScroll && (hash === '#about' || hash === '#home-news')) requestAnimationFrame(() => requestAnimationFrame(() => $(hash)?.scrollIntoView({ block: 'start' })));
   }
   document.title = title; renderCopy();
@@ -356,7 +356,7 @@ function updateScrollContext() {
   sectionFrame = 0;
   if ($('#home-view').hidden) return;
   const trigger = window.innerHeight * .34;
-  let active = 'RADIO';
+  let active = 'Radio';
   $$('.observe-section').forEach(section => {
     if (section.getBoundingClientRect().top <= trigger) active = section.dataset.sectionLabel;
   });
