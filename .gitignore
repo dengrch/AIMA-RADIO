@@ -32,7 +32,8 @@ pnpm-debug.log*
 # Local source material; the published site does not reference this directory
 opt/
 
-# Episode audio is published as GitHub Release assets.
-# Already-tracked audio remains tracked until it is removed after the Release exists.
-assets/audio/*
-!assets/audio/.gitkeep
+# Audio is hosted on GitHub Releases, never committed.
+assets/audio/
+
+# Local build output
+_site/
