@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="合間電台 AIMA RADIO — 即兴演奏、原创 demo，以及音乐与生活的记录。">
+  <meta name="description" content="合間電台 AIMA RADIO — 即兴演奏、原创 demo、成曲与生活记录。">
+  <meta name="theme-color" content="#f8f9f7">
   <title>AIMA RADIO</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="stylesheet" href="styles.css">
   <script src="content.js" defer></script>
   <script src="script.js" defer></script>
@@ -12,46 +14,91 @@
 <body>
   <a class="skip-link" href="#main">跳至内容 / Skip to content</a>
   <header class="site-head" id="top">
-    <h1><a id="site-title" href="#top" aria-label="AIMA RADIO — 首页"><span class="title-aima">aima</span> <span class="title-radio">RADIO</span></a></h1>
-    <div class="head-row">
-      <nav aria-label="site"><a href="#news">news</a><a href="#about">about</a></nav>
-      <div class="switches">
-        <div class="theme-switch" aria-label="theme"><button type="button" data-theme="light" aria-pressed="true" data-i18n="light">light</button><button type="button" data-theme="dark" aria-pressed="false" data-i18n="dark">dark</button></div>
-        <div class="lang-switch" aria-label="language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="zh" aria-pressed="false">中</button></div>
-      </div>
+    <h1 class="brand"><a id="site-title" href="#main" aria-label="aima — home"><span class="title-aima">aima</span></a><span id="brand-context" class="brand-context">RADIO</span></h1>
+    <div class="header-tools system-type">
+      <nav class="content-nav" aria-label="content">
+        <a href="#news/radio" data-category="radio">radio</a><a href="#news/demo" data-category="demo">demo</a><a href="#news/track" data-category="track">track</a><a href="#news/note" data-category="note">note</a>
+      </nav>
+      <div class="theme-switch" aria-label="theme"><button type="button" data-theme="light" aria-pressed="true" data-i18n="light">light</button><button type="button" data-theme="dark" aria-pressed="false" data-i18n="dark">dark</button></div>
+      <div class="lang-switch" aria-label="language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="zh" aria-pressed="false">中</button></div>
     </div>
   </header>
+
   <main id="main" tabindex="-1">
     <div id="home-view">
-      <section class="opening" aria-label="AIMA RADIO">
-        <a class="opening-image" href="#episode/sazanami"><img src="assets/images/sazanami-cover.jpg" alt="20260125 - Sazanami" fetchpriority="high"><span>20260125 - Sazanami <span>↗</span></span></a>
+      <nav class="home-local-nav system-type" aria-label="home sections"><a href="#home-news">news</a><a href="#about">about</a></nav>
+
+      <section class="recommendations observe-section" data-section-label="RADIO" aria-label="recommended content">
+        <div id="recommendation-track" class="recommendation-track"></div>
+        <div class="recommendation-controls system-type"><button id="recommendation-prev" type="button" aria-label="previous recommendation">←</button><span id="recommendation-count">01 / 04</span><button id="recommendation-next" type="button" aria-label="next recommendation">→</button></div>
       </section>
-      <section class="news section" id="news" aria-labelledby="news-title">
-        <div class="section-heading"><h2 id="news-title"><span>aima</span> news</h2><p data-i18n="newsNote">来自合間的更新</p></div>
-        <div class="filters" role="group" aria-label="Content category"><button data-filter="all" aria-pressed="true" data-i18n="all">全部</button><button data-filter="radio" aria-pressed="false" data-i18n="radio">电台</button><button data-filter="demo" aria-pressed="false">demo</button><button data-filter="notes" aria-pressed="false" data-i18n="notes">音乐记录</button></div>
-        <div id="episode-list"></div><p id="empty-list" hidden data-i18n="empty">这里还在慢慢积累，之后见。</p>
+
+      <section class="news section observe-section" id="home-news" data-section-label="news" aria-labelledby="home-news-title">
+        <h2 id="home-news-title" class="visually-hidden">news</h2>
+        <div id="home-news-list" class="news-list"></div>
+        <button id="load-more" class="text-button system-type" type="button" data-i18n="loadMore">load more</button>
       </section>
-      <section class="about section" id="about" aria-labelledby="about-title">
-        <div class="section-heading"><h2 id="about-title"><span>aima</span> about</h2><p data-i18n="aboutLabel">关于合間</p></div>
-        <div class="about-layout"><figure><img src="assets/images/radio-cover.jpg" alt="合間电台封面，蓝色天空中的月亮" loading="lazy" width="1400" height="1400"><figcaption>AIMA RADIO — 合間</figcaption></figure><div class="about-copy"><h3 data-i18n="aboutHeading">在埋头奔走的空档中。</h3><p data-i18n="aboutOne">「合間」是间隔，也是留给音乐的一点时间。这里收集即兴演奏、原创 demo，还有围绕它们写下的文字和拍下的照片。</p><p data-i18n="aboutTwo">有些声音已经成为一期电台，有些还只是未完成的片段。把它们留在这里，也把当时的生活留在这里。</p><p data-i18n="aboutThree">不定期更新。希望某一段声音，能陪你走一会儿。</p><span class="about-sign">合間 / aima</span></div></div>
+
+      <section class="about section observe-section" id="about" data-section-label="about" aria-labelledby="about-title">
+        <h2 id="about-title" class="visually-hidden">about</h2>
+        <div class="about-layout">
+          <div class="about-covers">
+            <figure><img src="assets/images/radio-cover.jpg" alt="合間电台封面" loading="lazy"><figcaption>current cover / 2026</figcaption></figure>
+            <figure class="old-cover"><img src="assets/images/radio-cover-old.jpg" alt="合間电台旧封面" loading="lazy"><figcaption>original cover / 2025</figcaption></figure>
+          </div>
+          <div class="about-copy"><h3 data-i18n="aboutHeading">在埋头奔走的空档中。</h3><p data-i18n="aboutOne"></p><p data-i18n="aboutTwo"></p><p data-i18n="aboutThree"></p><p data-i18n="aboutFour"></p><span class="about-sign">合間 / aima</span></div>
+        </div>
       </section>
     </div>
-    <article id="episode-view" class="section" hidden aria-labelledby="episode-title">
-      <div class="episode-heading"><p id="episode-date" class="meta"></p><h2 id="episode-title" tabindex="-1"></h2><p id="episode-note"></p></div>
-      <div class="player">
-        <audio id="audio" preload="metadata" playsinline></audio>
-        <button id="play-toggle" type="button">PLAY</button>
-        <div class="progress-wrap"><div id="progress-text" aria-hidden="true"></div><input id="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="播放进度" disabled></div>
-        <div class="times"><time id="current-time">00:00</time><span>/</span><time id="duration">00:00</time></div>
-      </div>
-      <div class="audio-help"><span id="audio-status" role="status" aria-live="polite"></span><a id="audio-direct" target="_blank" rel="noopener" data-i18n="direct">直接打开音频 ↗</a><a id="audio-backup" target="_blank" rel="noopener" hidden data-i18n="backup">备用音频 ↗</a></div>
-      <div class="story-heading"><span class="meta" data-i18n="words">文字与影像</span><h3 id="entry-title"></h3></div>
+
+    <section id="news-view" class="archive section" hidden aria-labelledby="archive-title">
+      <div class="archive-heading"><h2 id="archive-title">news</h2><p id="archive-description"></p></div>
+      <div id="year-filters" class="year-filters system-type" aria-label="year filter"></div>
+      <div id="archive-list" class="news-list archive-list"></div>
+    </section>
+
+    <article id="episode-view" class="detail-view section" hidden aria-labelledby="episode-title">
+      <div class="detail-heading"><p id="episode-date" class="meta system-type"></p><h2 id="episode-title" tabindex="-1"></h2><p id="episode-note"></p></div>
+      <div id="episode-player-slot"></div>
+      <div class="story-heading"><span class="meta system-type" data-i18n="words">文字与影像</span><h3 id="entry-title"></h3></div>
       <div id="entry-body" class="story"></div>
     </article>
-    <section id="not-found" class="section" hidden><p data-i18n="notFound">没有找到这篇记录。</p><a href="#news" data-i18n="back">← 返回所有内容</a></section>
+
+    <article id="demo-view" class="detail-view section" hidden aria-labelledby="demo-title">
+      <div class="detail-heading"><p class="meta system-type">work in progress / version history</p><h2 id="demo-title" tabindex="-1"></h2><p data-i18n="demoIntro">每次保存，都是它曾经存在过的样子。</p></div>
+      <div id="demo-tree" class="demo-tree"></div><div id="demo-player-slot"></div>
+    </article>
+
+    <article id="track-view" class="detail-view section" hidden aria-labelledby="track-title">
+      <div class="detail-heading"><p class="meta system-type">finished track</p><h2 id="track-title" tabindex="-1"></h2><p id="track-meta"></p><p id="track-description"></p></div>
+      <img id="track-cover" class="track-detail-cover" alt="" loading="lazy">
+      <div id="track-player-slot"></div>
+    </article>
+
+    <article id="note-view" class="detail-view section" hidden aria-labelledby="note-title">
+      <div class="detail-heading"><p id="note-date" class="meta system-type"></p><h2 id="note-title" tabindex="-1"></h2></div>
+      <div class="story-heading"><span class="meta system-type">note</span><h3 id="note-heading"></h3></div>
+      <div id="note-body" class="story"></div>
+    </article>
+
+    <section id="not-found" class="section" hidden><p data-i18n="notFound">没有找到这篇记录。</p></section>
+
+    <div id="shared-player" class="shared-player" hidden>
+      <audio id="audio" preload="metadata" playsinline></audio>
+      <button id="play-toggle" class="system-type" type="button">PLAY</button>
+      <div class="progress-wrap"><div id="progress-text" aria-hidden="true"></div><input id="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="播放进度" disabled></div>
+      <div class="times system-type"><time id="current-time">00:00</time><span>/</span><time id="duration">00:00</time></div>
+      <div class="audio-help system-type"><span id="audio-status" role="status" aria-live="polite"></span><a id="audio-direct" target="_blank" rel="noopener" data-i18n="direct">直接打开音频 ↗</a></div>
+    </div>
   </main>
-  <footer class="site-footer"><span>© <span id="year"></span> AIMA RADIO</span><a href="#top">back to top ↑</a></footer>
-  <div class="sound-control"><audio id="background-audio" loop preload="none" playsinline></audio><button id="background-toggle" type="button" aria-pressed="false"><span class="sound-icon" aria-hidden="true">ılıı</span> <span id="background-label">background music / soon</span></button><span id="background-status" role="status"></span></div>
+
+  <footer class="site-footer system-type"><span>© <span id="year"></span> AIMA RADIO</span><a href="#top">back to top ↑</a></footer>
+
+  <div class="sound-status system-type">
+    <audio id="background-audio" loop preload="metadata" playsinline></audio>
+    <button id="sound-toggle" type="button" aria-label="toggle current sound"><span class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button>
+    <a id="now-playing-link" href="#episode/oboro"><span id="sound-kind">background</span> / <span id="sound-title">20250731 - Oboro</span></a>
+  </div>
   <noscript><p class="section">请启用 JavaScript 以浏览节目与使用播放器。 Enable JavaScript to browse and listen.</p></noscript>
 </body>
 </html>

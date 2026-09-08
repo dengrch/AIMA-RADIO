@@ -29,11 +29,14 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Local source material; the published site does not reference this directory
-opt/
+# Local source material; keep only the reusable workflow in Git.
+opt/*
+!opt/网站更新流程.md
+!opt/音频元数据.md
 
-# Audio is hosted on GitHub Releases, never committed.
+# Audio is hosted on Cloudflare R2, never committed.
 assets/audio/
+assets/episodes/
 
 # Local build output
 _site/
