@@ -247,7 +247,7 @@ function renderCharacterProgress(value = Number(seek.value)) {
   const track = $('#progress-text'); const units = Math.max(2, Math.floor(track.clientWidth / 12));
   const cursor = Math.round(Math.max(0, Math.min(100, value)) / 100 * (units - 1));
   if (track.children.length !== units) track.replaceChildren(...Array.from({ length: units }, () => document.createElement('span')));
-  [...track.children].forEach((cell, index) => { cell.textContent = index === cursor ? '█' : '░'; });
+  [...track.children].forEach((cell, index) => { cell.textContent = ''; cell.classList.toggle('is-current', index === cursor); });
 }
 
 function setNowPlaying(kind, title, href, playing) {
