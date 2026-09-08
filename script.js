@@ -244,7 +244,7 @@ function paintProgress(value) {
 }
 
 function renderCharacterProgress(value = Number(seek.value)) {
-  const track = $('#progress-text'); const units = Math.max(2, Math.floor(track.clientWidth / 10));
+  const track = $('#progress-text'); const units = Math.max(2, Math.floor(track.clientWidth / 12));
   const cursor = Math.round(Math.max(0, Math.min(100, value)) / 100 * (units - 1));
   if (track.children.length !== units) track.replaceChildren(...Array.from({ length: units }, () => document.createElement('span')));
   [...track.children].forEach((cell, index) => { cell.textContent = index === cursor ? '█' : '░'; });
@@ -330,17 +330,17 @@ function setActiveNav(category = '') {
 
 function route({ preserveScroll = false } = {}) {
   if (!preserveScroll) hideViews();
-  const hash = location.hash || '#main'; const parts = hash.slice(1).split('/'); let title = 'AIMA RADIO'; let focus = null;
+  const hash = location.hash || '#main'; const parts = hash.slice(1).split('/'); let title = 'aima RADIO'; let focus = null;
   if (parts[0] === 'news' && ['radio', 'demo', 'track', 'note'].includes(parts[1])) {
-    archiveCategory = parts[1]; if (!preserveScroll) archiveYear = 'all'; $('#news-view').hidden = false; renderArchive(); setBrandContext(archiveCategory); setActiveNav(archiveCategory); title = `${archiveCategory} — AIMA RADIO`;
+    archiveCategory = parts[1]; if (!preserveScroll) archiveYear = 'all'; $('#news-view').hidden = false; renderArchive(); setBrandContext(archiveCategory); setActiveNav(archiveCategory); title = `${archiveCategory} — aima RADIO`;
   } else if (parts[0] === 'episode') {
-    const item = episodes.find(value => value.id === parts[1]); if (item) { $('#episode-view').hidden = false; renderEpisode(item); setBrandContext('radio'); setActiveNav('radio'); title = `${item[lang].title} — AIMA RADIO`; focus = $('#episode-title'); } else $('#not-found').hidden = false;
+    const item = episodes.find(value => value.id === parts[1]); if (item) { $('#episode-view').hidden = false; renderEpisode(item); setBrandContext('radio'); setActiveNav('radio'); title = `${item[lang].title} — aima RADIO`; focus = $('#episode-title'); } else $('#not-found').hidden = false;
   } else if (parts[0] === 'demo') {
-    const item = demos.find(value => value.id === parts[1]); if (item) { $('#demo-view').hidden = false; renderDemo(item); setBrandContext('demo'); setActiveNav('demo'); title = `${item.title} — AIMA RADIO`; focus = $('#demo-title'); } else $('#not-found').hidden = false;
+    const item = demos.find(value => value.id === parts[1]); if (item) { $('#demo-view').hidden = false; renderDemo(item); setBrandContext('demo'); setActiveNav('demo'); title = `${item.title} — aima RADIO`; focus = $('#demo-title'); } else $('#not-found').hidden = false;
   } else if (parts[0] === 'track') {
-    const item = tracks.find(value => value.id === parts[1]); if (item) { $('#track-view').hidden = false; renderTrack(item); setBrandContext('track'); setActiveNav('track'); title = `${item.title} — AIMA RADIO`; focus = $('#track-title'); } else $('#not-found').hidden = false;
+    const item = tracks.find(value => value.id === parts[1]); if (item) { $('#track-view').hidden = false; renderTrack(item); setBrandContext('track'); setActiveNav('track'); title = `${item.title} — aima RADIO`; focus = $('#track-title'); } else $('#not-found').hidden = false;
   } else if (parts[0] === 'note') {
-    const item = notes.find(value => value.id === parts[1]); if (item) { $('#note-view').hidden = false; renderNote(item); setBrandContext('note'); setActiveNav('note'); title = `${item[lang].title} — AIMA RADIO`; focus = $('#note-title'); } else $('#not-found').hidden = false;
+    const item = notes.find(value => value.id === parts[1]); if (item) { $('#note-view').hidden = false; renderNote(item); setBrandContext('note'); setActiveNav('note'); title = `${item[lang].title} — aima RADIO`; focus = $('#note-title'); } else $('#not-found').hidden = false;
   } else {
     $('#home-view').hidden = false; setBrandContext('RADIO'); setActiveNav(''); renderHomeNews(); renderRecommendations();
     if (!preserveScroll && (hash === '#about' || hash === '#home-news')) requestAnimationFrame(() => requestAnimationFrame(() => $(hash)?.scrollIntoView({ block: 'start' })));
