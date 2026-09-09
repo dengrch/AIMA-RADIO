@@ -15,6 +15,7 @@ html[data-theme="dark"] { --bg: #000; color-scheme: dark; }
 /* Safari 26 samples the body's real paint for its top browser chrome. */
 body { min-height: 100svh; margin: 0; color: var(--ink); background-color: var(--bg); font-family: var(--body); font-size: 15px; font-weight: 400; letter-spacing: .08em; line-height: 2.1; }
 html[data-theme="dark"], body[data-theme="dark"] { --bg:#000; --glass:rgba(0,0,0,.78); --ink:rgba(248,248,248,.91); --soft:rgba(248,248,248,.62); --dim:rgba(248,248,248,.4); --line:rgba(248,248,248,.2); }
+#safari-chrome-tint { position: fixed; z-index: 0; top: 0; left: 0; width: 100%; height: 4px; background-color: var(--bg); pointer-events: none; }
 [hidden] { display: none !important; }
 a { color: inherit; text-decoration: none; }
 button, input { color: inherit; font: inherit; }

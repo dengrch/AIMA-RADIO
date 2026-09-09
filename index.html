@@ -6,22 +6,26 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="color-scheme" content="light dark">
+  <meta id="safari-theme-color" name="theme-color" content="#f8f9f7">
   <meta name="description" content="合間電台 aima Radio — Ambient Improvisation, Memory &amp; Art. 即兴演奏、原创 demo、成曲与生活记录。">
   <script>
     try {
       const theme = localStorage.getItem('aima-theme');
       const activeTheme = theme === 'dark' ? 'dark' : 'light';
+      const backgroundColor = activeTheme === 'dark' ? '#000000' : '#f8f9f7';
       document.documentElement.dataset.theme = activeTheme;
       document.documentElement.style.colorScheme = activeTheme;
+      document.querySelector('#safari-theme-color').setAttribute('content', backgroundColor);
     } catch {}
   </script>
   <title>aima Radio</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=20260910-26">
+  <link rel="stylesheet" href="styles.css?v=20260910-27">
   <script src="content.js?v=20260909-13" defer></script>
-  <script src="script.js?v=20260910-26" defer></script>
+  <script src="script.js?v=20260910-27" defer></script>
 </head>
 <body>
+  <div id="safari-chrome-tint" aria-hidden="true"></div>
   <a class="skip-link" href="#main">跳至内容 / Skip to content</a>
   <header class="site-head" id="top">
     <h1 class="brand"><a id="site-title" href="#main" aria-label="aima — home"><span class="title-aima">aima</span></a><span id="brand-context" class="brand-context">Radio</span></h1>
