@@ -339,6 +339,24 @@ function setActiveNav(category = '') {
   $$('.content-nav a').forEach(link => link.setAttribute('aria-current', link.getAttribute('href') === `#news/${category}` ? 'page' : 'false'));
 }
 
+let bgmAutoAttempted = false;
+let bgmAwaitingGesture = false;
+function startHomeBgm() {
+  if (!audio.paused || !background.paused) return;
+  bgmAwaitingGesture = false;
+  background.play().catch(error => {
+    if (error.name === 'NotAllowedError') bgmAwaitingGesture = true;
+  });
+}
+
+document.addEventListener('click', event => {
+  if (!bgmAwaitingGesture || $('#home-view').hidden) return;
+  if (event.target.closest('#sound-toggle, #play-toggle')) return;
+  const link = event.target.closest('a');
+  if (link && !['#main', '#about', '#home-news'].includes(link.getAttribute('href'))) return;
+  startHomeBgm();
+});
+
 function route({ preserveScroll = false } = {}) {
   if (!preserveScroll) hideViews();
   const hash = location.hash || '#main'; const parts = hash.slice(1).split('/'); let title = 'aima Radio'; let focus = null;
@@ -357,6 +375,10 @@ function route({ preserveScroll = false } = {}) {
     if (!preserveScroll && (hash === '#about' || hash === '#home-news')) requestAnimationFrame(() => requestAnimationFrame(() => $(hash)?.scrollIntoView({ block: 'start' })));
   }
   document.title = title; renderCopy();
+  if (!$('#home-view').hidden && !bgmAutoAttempted) {
+    bgmAutoAttempted = true;
+    startHomeBgm();
+  }
   if (!preserveScroll && hash !== '#about' && hash !== '#home-news') window.scrollTo(0, 0);
   if (focus && !preserveScroll) focus.focus({ preventScroll: true });
   requestAnimationFrame(updateScrollContext);
@@ -412,9 +434,12 @@ function endScrub() { scrubbing = false; }
 seek.addEventListener('change', endScrub); window.addEventListener('pointerup', endScrub); window.addEventListener('pointercancel', endScrub);
 
 background.src = siteAudio.src; background.volume = siteAudio.volume;
+audio.addEventListener('play', () => { bgmAutoAttempted = true; bgmAwaitingGesture = false; });
+background.addEventListener('play', () => { bgmAwaitingGesture = false; });
 background.addEventListener('play', () => { audio.pause(); setNowPlaying('background', siteAudio.label, siteAudio.href, true); });
 background.addEventListener('pause', () => { if (audio.paused) setNowPlaying('background', siteAudio.label, siteAudio.href, false); });
 $('#sound-toggle').addEventListener('click', async () => {
+  bgmAutoAttempted = true; bgmAwaitingGesture = false;
   if (!audio.paused) { audio.pause(); return; }
   if (!background.paused) { background.pause(); return; }
   if (currentMedia && !sharedPlayer.hidden) { await playMedia(currentMedia, sharedPlayer.parentElement); return; }
