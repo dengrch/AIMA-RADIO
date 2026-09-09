@@ -463,7 +463,6 @@ function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.backgroundColor = color;
   document.body.dataset.theme = theme;
-  $('.status-bar-background').style.backgroundColor = color;
   $$('[data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.theme === theme)));
   document.querySelector('meta[name="theme-color"]').content = color;
 }
