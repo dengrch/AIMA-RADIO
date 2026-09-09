@@ -12,10 +12,9 @@
 html, body { min-height: 100%; }
 html { scroll-behavior: smooth; background: transparent; color-scheme: light; }
 html[data-theme="dark"] { --bg: #000; color-scheme: dark; }
-/* Safari 26 samples the body's real paint for its top browser chrome. */
+/* Paint the document canvas from the active theme, including standalone mode. */
 body { min-height: 100svh; margin: 0; color: var(--ink); background-color: var(--bg); font-family: var(--body); font-size: 15px; font-weight: 400; letter-spacing: .08em; line-height: 2.1; }
 html[data-theme="dark"], body[data-theme="dark"] { --bg:#000; --glass:rgba(0,0,0,.78); --ink:rgba(248,248,248,.91); --soft:rgba(248,248,248,.62); --dim:rgba(248,248,248,.4); --line:rgba(248,248,248,.2); }
-#safari-chrome-tint { position: fixed; z-index: 0; top: 0; left: 0; width: 100%; height: 4px; background-color: var(--bg); pointer-events: none; }
 [hidden] { display: none !important; }
 a { color: inherit; text-decoration: none; }
 button, input { color: inherit; font: inherit; }
@@ -27,9 +26,10 @@ img { display: block; width: 100%; }
 .skip-link:focus { top: 1rem; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* Safari 26 extends a sticky element's own background into the status-bar inset. Keep the sticky box transparent and paint our glass on its pseudo-element instead. */
-.site-head { position: sticky; z-index: 10; top: 0; display: flex; isolation: isolate; align-items: center; justify-content: space-between; gap: 2rem; min-height: 92px; padding: 1rem 4vw; background: transparent; }
-.site-head::before { position: absolute; z-index: -1; inset: 0; background: var(--bg); content: ""; pointer-events: none; }
+/* Keep the filter on the sticky element itself: WebKit's fixed-edge sampling
+   walks hit-test ancestors, so a sibling ::before filter can be missed and its
+   sampled solid color reused after a theme change. See docs/safari-tint.md. */
+.site-head { position: sticky; z-index: 10; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 92px; padding: 1rem 4vw; background: var(--bg); }
 .brand { display: flex; align-items: baseline; min-width: 0; margin: 0; font-family: var(--display); font-size: clamp(2.5rem, 5.2vw, 4.8rem); font-weight: 400; line-height: 1; letter-spacing: -.045em; white-space: nowrap; }
 #site-title { transition: color .2s ease; }
 #site-title:active { color: var(--dim); }
@@ -145,7 +145,7 @@ figcaption { margin-top: .55rem; color: var(--soft); font-family: var(--system);
 
 .sound-status { position: fixed; z-index: 12; right: 1.2rem; bottom: 1rem; display: flex; align-items: center; max-width: calc(100% - 2.4rem); padding: .45rem .65rem; background: var(--bg); color: var(--soft); font-size: 13px; }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .site-head::before, .sound-status { background: var(--glass); -webkit-backdrop-filter: blur(20px) saturate(125%); backdrop-filter: blur(20px) saturate(125%); }
+  .site-head, .sound-status { background: var(--glass); -webkit-backdrop-filter: blur(20px) saturate(125%); backdrop-filter: blur(20px) saturate(125%); }
 }
 #sound-toggle { display: grid; place-items: center; width: 38px; height: 28px; padding: 0; border: 0; background: transparent; }
 #now-playing-link { max-width: min(50vw, 28rem); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

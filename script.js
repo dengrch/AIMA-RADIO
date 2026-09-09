@@ -464,24 +464,15 @@ $$('[data-lang]').forEach(button => button.addEventListener('click', () => {
     updateScrollContext();
   });
 }));
-let themeRevision = 0;
 function applyTheme(theme) {
   const backgroundColor = theme === 'dark' ? '#000000' : '#f8f9f7';
-  const revision = ++themeRevision;
 
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
   document.body.dataset.theme = theme;
-  document.body.style.backgroundColor = backgroundColor;
-  $('#safari-chrome-tint').style.backgroundColor = backgroundColor;
   $$('.theme-switch [data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.theme === theme)));
-
-  requestAnimationFrame(() => {
-    if (revision !== themeRevision) return;
-    // Safari 26 derives the tint from painted elements, but this mutation asks its
-    // browser chrome to re-sample after the new body/probe color has been applied.
-    document.querySelector('#safari-theme-color').setAttribute('content', backgroundColor);
-  });
+  // Compatibility for browsers that honor theme-color; not a Safari repaint API.
+  $('#safari-theme-color').setAttribute('content', backgroundColor);
 }
 applyTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
 $$('.theme-switch [data-theme]').forEach(button => button.addEventListener('click', () => {
