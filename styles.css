@@ -223,3 +223,14 @@ figcaption { margin-top: .55rem; color: var(--soft); font-family: var(--system);
 .about-concept > span { display: block; font-family: var(--system); font-size: clamp(1.5rem, 2.6vw, 2.2rem); font-weight: 400; letter-spacing: -.015em; line-height: 1.35; }
 .about-concept small { display: none; margin-top: .85rem; color: var(--soft); font-size: 13px; letter-spacing: .08em; }
 body[data-lang="zh"] .about-concept small { display: block; }
+
+/* Paint the status-bar safe area ourselves, including during theme switches. */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 11; pointer-events: none; }
+.site-head { padding-top: calc(1rem + env(safe-area-inset-top, 0px)); padding-left: max(4vw, env(safe-area-inset-left, 0px)); padding-right: max(4vw, env(safe-area-inset-right, 0px)); }
+main { padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.section { scroll-margin-top: calc(110px + env(safe-area-inset-top, 0px)); }
+.sound-status { bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); right: max(1.2rem, env(safe-area-inset-right, 0px)); }
+@media (max-width: 820px) {
+  .site-head { padding-left: max(1.25rem, env(safe-area-inset-left, 0px)); padding-right: max(1.25rem, env(safe-area-inset-right, 0px)); }
+  .sound-status { bottom: calc(.6rem + env(safe-area-inset-bottom, 0px)); right: max(.7rem, env(safe-area-inset-right, 0px)); }
+}
