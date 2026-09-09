@@ -12,7 +12,7 @@
 html { scroll-behavior: smooth; background: var(--bg); color-scheme: light; }
 html[data-theme="dark"] { --bg: #000; color-scheme: dark; }
 body { min-height: 100svh; margin: 0; color: var(--ink); background: var(--bg); font-family: var(--body); font-size: 15px; font-weight: 400; letter-spacing: .08em; line-height: 2.1; }
-body[data-theme="dark"] { --bg:#000; --ink:rgba(248,248,248,.91); --soft:rgba(248,248,248,.62); --dim:rgba(248,248,248,.4); --line:rgba(248,248,248,.2); }
+html[data-theme="dark"], body[data-theme="dark"] { --bg:#000; --ink:rgba(248,248,248,.91); --soft:rgba(248,248,248,.62); --dim:rgba(248,248,248,.4); --line:rgba(248,248,248,.2); }
 [hidden] { display: none !important; }
 a { color: inherit; text-decoration: none; }
 button, input { color: inherit; font: inherit; }
@@ -225,7 +225,7 @@ figcaption { margin-top: .55rem; color: var(--soft); font-family: var(--system);
 body[data-lang="zh"] .about-concept small { display: block; }
 
 /* Paint the status-bar safe area ourselves, including during theme switches. */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 11; pointer-events: none; }
+.status-bar-background { position: fixed; inset: 0 0 auto; height: max(1px, env(safe-area-inset-top, 0px)); background-color: var(--bg); z-index: 11; pointer-events: none; }
 .site-head { padding-top: calc(1rem + env(safe-area-inset-top, 0px)); padding-left: max(4vw, env(safe-area-inset-left, 0px)); padding-right: max(4vw, env(safe-area-inset-right, 0px)); }
 main { padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
 .section { scroll-margin-top: calc(110px + env(safe-area-inset-top, 0px)); }

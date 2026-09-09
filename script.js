@@ -458,10 +458,19 @@ $$('[data-lang]').forEach(button => button.addEventListener('click', () => {
     updateScrollContext();
   });
 }));
+function applyTheme(theme) {
+  const color = theme === 'dark' ? '#000000' : '#f8f9f7';
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.backgroundColor = color;
+  document.body.dataset.theme = theme;
+  $('.status-bar-background').style.backgroundColor = color;
+  $$('[data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.theme === theme)));
+  document.querySelector('meta[name="theme-color"]').content = color;
+}
+applyTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
 $$('[data-theme]').forEach(button => button.addEventListener('click', () => {
-  document.documentElement.dataset.theme = button.dataset.theme;
-  document.body.dataset.theme = button.dataset.theme; $$('[data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node === button)));
-  document.querySelector('meta[name="theme-color"]').content = button.dataset.theme === 'dark' ? '#000000' : '#f8f9f7';
+  applyTheme(button.dataset.theme);
+  try { localStorage.setItem('aima-theme', button.dataset.theme); } catch {}
 }));
 $('.skip-link').addEventListener('click', event => { event.preventDefault(); $('#main').focus(); $('#main').scrollIntoView(); });
 $('.site-footer a').addEventListener('click', event => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
