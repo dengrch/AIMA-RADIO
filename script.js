@@ -115,6 +115,7 @@ function renderCopy() {
   $$('[data-lang]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.lang === lang)));
   $$('.content-nav a').forEach(node => { node.textContent = copy[lang][`nav${node.dataset.category[0].toUpperCase()}${node.dataset.category.slice(1)}`]; });
   seek.setAttribute('aria-label', copy[lang].seek);
+  $$('[data-skip]').forEach(button => button.setAttribute('aria-label', lang === 'zh' ? (Number(button.dataset.skip) < 0 ? '后退 5 秒' : '前进 5 秒') : (Number(button.dataset.skip) < 0 ? 'Back 5 seconds' : 'Forward 5 seconds')));
   $('#play-toggle').textContent = audio.paused ? copy[lang].play : copy[lang].pause;
   setStatus(status);
 }
@@ -431,6 +432,11 @@ seek.addEventListener('pointerdown', event => {
 });
 seek.addEventListener('input', () => { if (Number.isFinite(audio.duration) && audio.duration > 0) { paintProgress(Number(seek.value)); audio.currentTime = Number(seek.value) / 100 * audio.duration; } });
 function endScrub() { scrubbing = false; }
+$$('[data-skip]').forEach(button => button.addEventListener('click', () => {
+  if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+  audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + Number(button.dataset.skip)));
+  paintProgress(audio.currentTime / audio.duration * 100);
+}));
 seek.addEventListener('change', endScrub); window.addEventListener('pointerup', endScrub); window.addEventListener('pointercancel', endScrub);
 
 background.src = siteAudio.src; background.volume = siteAudio.volume;

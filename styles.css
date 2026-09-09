@@ -115,6 +115,9 @@ figcaption { margin-top: .55rem; color: var(--soft); font-family: var(--system);
 #seek::-webkit-slider-runnable-track { height: 44px; }
 #seek::-webkit-slider-thumb { width: 0; height: 44px; appearance: none; }
 .times { display: flex; gap: .55rem; font-size: 13px; font-variant-numeric: tabular-nums; }
+.times { align-items: center; }
+.times button { min-width: 44px; min-height: 44px; padding: .5rem .2rem; border: 0; background: transparent; touch-action: manipulation; }
+.times button:active { color: var(--dim); }
 .audio-help { display: flex; grid-column: 1 / -1; gap: 1rem; min-height: 2.4rem; padding: .4rem 0; color: var(--soft); font-size: 13px; }
 #audio-status { margin-right: auto; }
 .audio-help a:hover { text-decoration: underline; text-underline-offset: .2em; }
@@ -187,6 +190,8 @@ figcaption { margin-top: .55rem; color: var(--soft); font-family: var(--system);
   .shared-player { grid-template-columns: 55px 1fr; gap: .2rem 1rem; }
   .times { grid-column: 2; justify-content: space-between; }
   .times span { display: none; }
+  .audio-help { margin-top: 1rem; padding-top: .75rem; }
+  #audio-direct { display: inline-flex; align-items: center; min-height: 44px; }
   .story-heading { grid-template-columns: 1fr; gap: 1rem; }
   .story-photo, .story-photo:nth-of-type(even) { float: none; width: 100%; margin: 1.8rem 0; }
   .demo-version { grid-template-columns: 42px minmax(0, 1fr) auto; gap: .6rem 1rem; }
@@ -223,6 +228,13 @@ figcaption { margin-top: .55rem; color: var(--soft); font-family: var(--system);
 .about-concept > span { display: block; font-family: var(--system); font-size: clamp(1.5rem, 2.6vw, 2.2rem); font-weight: 400; letter-spacing: -.015em; line-height: 1.35; }
 .about-concept small { display: none; margin-top: .85rem; color: var(--soft); font-size: 13px; letter-spacing: .08em; }
 body[data-lang="zh"] .about-concept small { display: block; }
+
+/* One glass surface extends behind the header and the top safe area. */
+.site-head { isolation: isolate; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.site-head::before { content: ""; position: absolute; z-index: -1; inset: calc(0px - env(safe-area-inset-top, 0px)) 0 0; background: var(--bg); pointer-events: none; }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-head::before { background: color-mix(in srgb, var(--bg) 78%, transparent); -webkit-backdrop-filter: blur(20px) saturate(125%); backdrop-filter: blur(20px) saturate(125%); }
+}
 
 /* The canvas reaches the screen edges; only controls avoid the cutouts. */
 .site-head { padding-top: calc(1rem + env(safe-area-inset-top, 0px)); padding-left: max(4vw, env(safe-area-inset-left, 0px)); padding-right: max(4vw, env(safe-area-inset-right, 0px)); }
