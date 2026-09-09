@@ -471,8 +471,6 @@ function applyTheme(theme) {
   document.documentElement.style.colorScheme = theme;
   document.body.dataset.theme = theme;
   $$('[data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.theme === theme)));
-  $('#theme-color-light').media = theme === 'light' ? 'all' : 'not all';
-  $('#theme-color-dark').media = theme === 'dark' ? 'all' : 'not all';
 }
 applyTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
 $$('[data-theme]').forEach(button => button.addEventListener('click', () => {

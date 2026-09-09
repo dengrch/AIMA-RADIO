@@ -25,7 +25,9 @@ img { display: block; width: 100%; }
 .skip-link:focus { top: 1rem; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-.site-head { position: sticky; z-index: 10; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 92px; padding: 1rem 4vw; background: var(--bg); }
+/* Safari 26 extends a sticky element's own background into the status-bar inset. Keep the sticky box transparent and paint our glass on its pseudo-element instead. */
+.site-head { position: sticky; z-index: 10; top: 0; display: flex; isolation: isolate; align-items: center; justify-content: space-between; gap: 2rem; min-height: 92px; padding: 1rem 4vw; background: transparent; }
+.site-head::before { position: absolute; z-index: -1; inset: 0; background: var(--bg); content: ""; pointer-events: none; }
 .brand { display: flex; align-items: baseline; min-width: 0; margin: 0; font-family: var(--display); font-size: clamp(2.5rem, 5.2vw, 4.8rem); font-weight: 400; line-height: 1; letter-spacing: -.045em; white-space: nowrap; }
 #site-title { transition: color .2s ease; }
 #site-title:active { color: var(--dim); }
@@ -141,7 +143,7 @@ figcaption { margin-top: .55rem; color: var(--soft); font-family: var(--system);
 
 .sound-status { position: fixed; z-index: 12; right: 1.2rem; bottom: 1rem; display: flex; align-items: center; max-width: calc(100% - 2.4rem); padding: .45rem .65rem; background: var(--bg); color: var(--soft); font-size: 13px; }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .site-head, .sound-status { background: var(--glass); -webkit-backdrop-filter: blur(20px) saturate(125%); backdrop-filter: blur(20px) saturate(125%); }
+  .site-head::before, .sound-status { background: var(--glass); -webkit-backdrop-filter: blur(20px) saturate(125%); backdrop-filter: blur(20px) saturate(125%); }
 }
 #sound-toggle { display: grid; place-items: center; width: 38px; height: 28px; padding: 0; border: 0; background: transparent; }
 #now-playing-link { max-width: min(50vw, 28rem); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
