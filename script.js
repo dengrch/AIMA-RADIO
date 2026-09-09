@@ -468,9 +468,11 @@ function applyTheme(theme) {
   const color = theme === 'dark' ? '#000000' : '#f8f9f7';
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.backgroundColor = color;
+  document.documentElement.style.colorScheme = theme;
   document.body.dataset.theme = theme;
   $$('[data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.theme === theme)));
-  document.querySelector('meta[name="theme-color"]').content = color;
+  $('#theme-color-light').media = theme === 'light' ? 'all' : 'not all';
+  $('#theme-color-dark').media = theme === 'dark' ? 'all' : 'not all';
 }
 applyTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
 $$('[data-theme]').forEach(button => button.addEventListener('click', () => {
