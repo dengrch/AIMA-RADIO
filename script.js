@@ -465,9 +465,13 @@ $$('[data-lang]').forEach(button => button.addEventListener('click', () => {
   });
 }));
 function applyTheme(theme) {
+  const backgroundColor = theme === 'dark' ? '#000000' : '#f8f9f7';
+
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
   document.body.dataset.theme = theme;
+  // A real body color change prompts iOS Safari to re-sample its top chrome.
+  document.body.style.backgroundColor = backgroundColor;
   $$('[data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.theme === theme)));
 }
 applyTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
