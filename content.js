@@ -534,6 +534,228 @@ const demos = [
     "durationLabel": "02:51"
   },
   {
+    "id": "zure",
+    "title": "ZURE",
+    "category": "demo",
+    "publishedAt": "2026-01-20",
+    "versions": [
+      {
+        "name": "ZURE",
+        "filename": "ZURE.mp3",
+        "modifiedAt": "2026-01-20",
+        "audio": "https://audio.aimaradio.com/demo/ZURE.mp3",
+        "durationSeconds": 69,
+        "durationLabel": "01:09",
+        "sizeBytes": 1385451,
+        "sizeLabel": "1.3 MB",
+        "bitrateKbps": 160,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "01:09"
+  },
+  {
+    "id": "augustus",
+    "title": "Augustus",
+    "category": "demo",
+    "publishedAt": "2025-11-18",
+    "versions": [
+      {
+        "name": "Augustus",
+        "filename": "Augustus.mp3",
+        "modifiedAt": "2025-11-18",
+        "audio": "https://audio.aimaradio.com/demo/Augustus.mp3",
+        "durationSeconds": 50,
+        "durationLabel": "00:50",
+        "sizeBytes": 1005631,
+        "sizeLabel": "1.0 MB",
+        "bitrateKbps": 161,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "00:50"
+  },
+  {
+    "id": "3068-307e-3068-3099-3046",
+    "title": "とまどう",
+    "category": "demo",
+    "publishedAt": "2025-07-23",
+    "versions": [
+      {
+        "name": "とまどう_v2",
+        "filename": "とまどう_v2.mp3",
+        "modifiedAt": "2025-05-13",
+        "audio": "https://audio.aimaradio.com/demo/%E3%81%A8%E3%81%BE%E3%81%A8%E3%82%99%E3%81%86_v2.mp3",
+        "durationSeconds": 90,
+        "durationLabel": "01:30",
+        "sizeBytes": 1805500,
+        "sizeLabel": "1.7 MB",
+        "bitrateKbps": 160,
+        "tags": {}
+      },
+      {
+        "name": "とまどう_pt2",
+        "filename": "とまどう_pt2.mp3",
+        "modifiedAt": "2025-07-23",
+        "audio": "https://audio.aimaradio.com/demo/%E3%81%A8%E3%81%BE%E3%81%A8%E3%82%99%E3%81%86_pt2.mp3",
+        "durationSeconds": 65,
+        "durationLabel": "01:05",
+        "sizeBytes": 1296635,
+        "sizeLabel": "1.2 MB",
+        "bitrateKbps": 161,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "01:05"
+  },
+  {
+    "id": "96e8-306e-9752-7a7a",
+    "title": "雨の青空",
+    "category": "demo",
+    "publishedAt": "2025-06-16",
+    "versions": [
+      {
+        "name": "雨の青空_pt1",
+        "filename": "雨の青空_pt1.mp3",
+        "modifiedAt": "2024-08-26",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9D%92%E7%A9%BA_pt1.mp3",
+        "durationSeconds": 79,
+        "durationLabel": "01:19",
+        "sizeBytes": 3156554,
+        "sizeLabel": "3.0 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      },
+      {
+        "name": "雨の青空_pt2",
+        "filename": "雨の青空_pt2.mp3",
+        "modifiedAt": "2024-09-04",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9D%92%E7%A9%BA_pt2.mp3",
+        "durationSeconds": 152,
+        "durationLabel": "02:32",
+        "sizeBytes": 6081223,
+        "sizeLabel": "5.8 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      },
+      {
+        "name": "雨の青空_pt3",
+        "filename": "雨の青空_pt3.mp3",
+        "modifiedAt": "2025-06-16",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9D%92%E7%A9%BA_pt3.mp3",
+        "durationSeconds": 257,
+        "durationLabel": "04:17",
+        "sizeBytes": 5152308,
+        "sizeLabel": "4.9 MB",
+        "bitrateKbps": 160,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "04:17"
+  },
+  {
+    "id": "96e8-306e-96c5-793c",
+    "title": "雨の雅礼",
+    "category": "demo",
+    "publishedAt": "2025-05-19",
+    "versions": [
+      {
+        "name": "雨の雅礼_pt1",
+        "filename": "雨の雅礼_pt1.mp3",
+        "modifiedAt": "2023-02-28",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9B%85%E7%A4%BC_pt1.mp3",
+        "durationSeconds": 120,
+        "durationLabel": "02:00",
+        "sizeBytes": 4806447,
+        "sizeLabel": "4.6 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      },
+      {
+        "name": "雨の雅礼_pt2",
+        "filename": "雨の雅礼_pt2.mp3",
+        "modifiedAt": "2023-07-16",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9B%85%E7%A4%BC_pt2.mp3",
+        "durationSeconds": 240,
+        "durationLabel": "04:00",
+        "sizeBytes": 9606709,
+        "sizeLabel": "9.2 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      },
+      {
+        "name": "雨の雅礼_pt3",
+        "filename": "雨の雅礼_pt3.mp3",
+        "modifiedAt": "2023-08-28",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9B%85%E7%A4%BC_pt3.mp3",
+        "durationSeconds": 264,
+        "durationLabel": "04:24",
+        "sizeBytes": 10566970,
+        "sizeLabel": "10.1 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      },
+      {
+        "name": "雨の雅礼_pt4_Tide_bonus",
+        "filename": "雨の雅礼_pt4_Tide_bonus.mp3",
+        "modifiedAt": "2024-01-26",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9B%85%E7%A4%BC_pt4_Tide_bonus.mp3",
+        "durationSeconds": 60,
+        "durationLabel": "01:00",
+        "sizeBytes": 2406317,
+        "sizeLabel": "2.3 MB",
+        "bitrateKbps": 321,
+        "tags": {}
+      },
+      {
+        "name": "雨の雅礼_pt4",
+        "filename": "雨の雅礼_pt4.mp3",
+        "modifiedAt": "2024-03-21",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9B%85%E7%A4%BC_pt4.mp3",
+        "durationSeconds": 468,
+        "durationLabel": "07:48",
+        "sizeBytes": 18726578,
+        "sizeLabel": "17.9 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      },
+      {
+        "name": "雨の雅礼_pt5",
+        "filename": "雨の雅礼_pt5.mp3",
+        "modifiedAt": "2025-05-19",
+        "audio": "https://audio.aimaradio.com/demo/%E9%9B%A8%E3%81%AE%E9%9B%85%E7%A4%BC_pt5.mp3",
+        "durationSeconds": 123,
+        "durationLabel": "02:03",
+        "sizeBytes": 2465353,
+        "sizeLabel": "2.4 MB",
+        "bitrateKbps": 160,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "02:03"
+  },
+  {
+    "id": "icity",
+    "title": "icity",
+    "category": "demo",
+    "publishedAt": "2025-04-22",
+    "versions": [
+      {
+        "name": "icity",
+        "filename": "icity.mp3",
+        "modifiedAt": "2025-04-22",
+        "audio": "https://audio.aimaradio.com/demo/icity.mp3",
+        "durationSeconds": 146,
+        "durationLabel": "02:26",
+        "sizeBytes": 5862839,
+        "sizeLabel": "5.6 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "02:26"
+  },
+  {
     "id": "mis",
     "title": "mis",
     "category": "demo",
@@ -610,9 +832,297 @@ const demos = [
       }
     ],
     "durationLabel": "02:41"
+  },
+  {
+    "id": "602a-7378",
+    "title": "怪獸",
+    "category": "demo",
+    "publishedAt": "2024-11-24",
+    "versions": [
+      {
+        "name": "怪獸",
+        "filename": "怪獸.mp3",
+        "modifiedAt": "2024-11-24",
+        "audio": "https://audio.aimaradio.com/demo/%E6%80%AA%E7%8D%B8.mp3",
+        "durationSeconds": 38,
+        "durationLabel": "00:38",
+        "sizeBytes": 1542186,
+        "sizeLabel": "1.5 MB",
+        "bitrateKbps": 321,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "00:38"
+  },
+  {
+    "id": "6df1-96e8",
+    "title": "深雨",
+    "category": "demo",
+    "publishedAt": "2024-11-05",
+    "versions": [
+      {
+        "name": "深雨_pt1",
+        "filename": "深雨_pt1.mp3",
+        "modifiedAt": "2024-11-05",
+        "audio": "https://audio.aimaradio.com/demo/%E6%B7%B1%E9%9B%A8_pt1.mp3",
+        "durationSeconds": 63,
+        "durationLabel": "01:03",
+        "sizeBytes": 2532749,
+        "sizeLabel": "2.4 MB",
+        "bitrateKbps": 321,
+        "tags": {}
+      },
+      {
+        "name": "深雨_pt2",
+        "filename": "深雨_pt2.mp3",
+        "modifiedAt": "2024-11-05",
+        "audio": "https://audio.aimaradio.com/demo/%E6%B7%B1%E9%9B%A8_pt2.mp3",
+        "durationSeconds": 82,
+        "durationLabel": "01:22",
+        "sizeBytes": 3291345,
+        "sizeLabel": "3.1 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "01:22"
+  },
+  {
+    "id": "6e80-6708",
+    "title": "満月",
+    "category": "demo",
+    "publishedAt": "2024-10-22",
+    "versions": [
+      {
+        "name": "満月",
+        "filename": "満月.mp3",
+        "modifiedAt": "2024-10-20",
+        "audio": "https://audio.aimaradio.com/demo/%E6%BA%80%E6%9C%88.mp3",
+        "durationSeconds": 32,
+        "durationLabel": "00:32",
+        "sizeBytes": 1286186,
+        "sizeLabel": "1.2 MB",
+        "bitrateKbps": 321,
+        "tags": {}
+      },
+      {
+        "name": "満月_pt2",
+        "filename": "満月_pt2.mp3",
+        "modifiedAt": "2024-10-22",
+        "audio": "https://audio.aimaradio.com/demo/%E6%BA%80%E6%9C%88_pt2.mp3",
+        "durationSeconds": 104,
+        "durationLabel": "01:44",
+        "sizeBytes": 4166970,
+        "sizeLabel": "4.0 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "01:44"
+  },
+  {
+    "id": "3044-3061-3053-3099-306e-304a-3068",
+    "title": "いちごのおと",
+    "category": "demo",
+    "publishedAt": "2024-08-23",
+    "versions": [
+      {
+        "name": "いちごのおと_pt1_res",
+        "filename": "いちごのおと_pt1_res.mp3",
+        "modifiedAt": "2024-08-21",
+        "audio": "https://audio.aimaradio.com/demo/%E3%81%84%E3%81%A1%E3%81%93%E3%82%99%E3%81%AE%E3%81%8A%E3%81%A8_pt1_res.mp3",
+        "durationSeconds": 56,
+        "durationLabel": "00:56",
+        "sizeBytes": 2246447,
+        "sizeLabel": "2.1 MB",
+        "bitrateKbps": 321,
+        "tags": {}
+      },
+      {
+        "name": "いちごのおと_pt2",
+        "filename": "いちごのおと_pt2.mp3",
+        "modifiedAt": "2024-08-23",
+        "audio": "https://audio.aimaradio.com/demo/%E3%81%84%E3%81%A1%E3%81%93%E3%82%99%E3%81%AE%E3%81%8A%E3%81%A8_pt2.mp3",
+        "durationSeconds": 132,
+        "durationLabel": "02:12",
+        "sizeBytes": 5287100,
+        "sizeLabel": "5.0 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "02:12"
+  },
+  {
+    "id": "6a58-6d32-82b1-706b",
+    "title": "橘洲花火",
+    "category": "demo",
+    "publishedAt": "2024-07-30",
+    "versions": [
+      {
+        "name": "橘洲花火_part1",
+        "filename": "橘洲花火_part1.mp3",
+        "modifiedAt": "2022-09-05",
+        "audio": "https://audio.aimaradio.com/demo/%E6%A9%98%E6%B4%B2%E8%8A%B1%E7%81%AB_part1.mp3",
+        "durationSeconds": 122,
+        "durationLabel": "02:02",
+        "sizeBytes": 4894219,
+        "sizeLabel": "4.7 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      },
+      {
+        "name": "橘洲花火_pt2",
+        "filename": "橘洲花火_pt2.mp3",
+        "modifiedAt": "2022-12-18",
+        "audio": "https://audio.aimaradio.com/demo/%E6%A9%98%E6%B4%B2%E8%8A%B1%E7%81%AB_pt2.mp3",
+        "durationSeconds": 159,
+        "durationLabel": "02:39",
+        "sizeBytes": 6377974,
+        "sizeLabel": "6.1 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      },
+      {
+        "name": "橘洲花火_pt3",
+        "filename": "橘洲花火_pt3.mp3",
+        "modifiedAt": "2024-07-30",
+        "audio": "https://audio.aimaradio.com/demo/%E6%A9%98%E6%B4%B2%E8%8A%B1%E7%81%AB_pt3.mp3",
+        "durationSeconds": 244,
+        "durationLabel": "04:04",
+        "sizeBytes": 9781207,
+        "sizeLabel": "9.3 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "04:04"
+  },
+  {
+    "id": "6708-304b-3099-7dba-9e97-3066-3099-3059-306d",
+    "title": "月が綺麗ですね",
+    "category": "demo",
+    "publishedAt": "2024-01-20",
+    "versions": [
+      {
+        "name": "月が綺麗ですね",
+        "filename": "月が綺麗ですね.mp3",
+        "modifiedAt": "2024-01-20",
+        "audio": "https://audio.aimaradio.com/demo/%E6%9C%88%E3%81%8B%E3%82%99%E7%B6%BA%E9%BA%97%E3%81%A6%E3%82%99%E3%81%99%E3%81%AD.mp3",
+        "durationSeconds": 252,
+        "durationLabel": "04:12",
+        "sizeBytes": 10071688,
+        "sizeLabel": "9.6 MB",
+        "bitrateKbps": 320,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "04:12"
+  },
+  {
+    "id": "yali-jazz",
+    "title": "yali_jazz",
+    "category": "demo",
+    "publishedAt": "2022-03-23",
+    "versions": [
+      {
+        "name": "yali_jazz",
+        "filename": "yali_jazz.mp3",
+        "modifiedAt": "2022-03-23",
+        "audio": "https://audio.aimaradio.com/demo/yali_jazz.mp3",
+        "durationSeconds": 81,
+        "durationLabel": "01:21",
+        "sizeBytes": 1625255,
+        "sizeLabel": "1.5 MB",
+        "bitrateKbps": 160,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "01:21"
+  },
+  {
+    "id": "1-1",
+    "title": "1.1",
+    "category": "demo",
+    "publishedAt": "2022-01-01",
+    "versions": [
+      {
+        "name": "1.1",
+        "filename": "1.1.mp3",
+        "modifiedAt": "2022-01-01",
+        "audio": "https://audio.aimaradio.com/demo/1.1.mp3",
+        "durationSeconds": 135,
+        "durationLabel": "02:15",
+        "sizeBytes": 2700978,
+        "sizeLabel": "2.6 MB",
+        "bitrateKbps": 160,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "02:15"
+  },
+  {
+    "id": "3c3",
+    "title": "σ",
+    "category": "demo",
+    "publishedAt": "2021-11-25",
+    "versions": [
+      {
+        "name": "σ",
+        "filename": "σ.mp3",
+        "modifiedAt": "2021-11-20",
+        "audio": "https://audio.aimaradio.com/demo/%CF%83.mp3",
+        "durationSeconds": 446,
+        "durationLabel": "07:26",
+        "sizeBytes": 8933794,
+        "sizeLabel": "8.5 MB",
+        "bitrateKbps": 160,
+        "tags": {}
+      },
+      {
+        "name": "σ_雅礼蓝版",
+        "filename": "σ_雅礼蓝版.mp3",
+        "modifiedAt": "2021-11-25",
+        "audio": "https://audio.aimaradio.com/demo/%CF%83_%E9%9B%85%E7%A4%BC%E8%93%9D%E7%89%88.mp3",
+        "durationSeconds": 41,
+        "durationLabel": "00:41",
+        "sizeBytes": 824341,
+        "sizeLabel": "0.8 MB",
+        "bitrateKbps": 161,
+        "tags": {}
+      }
+    ],
+    "durationLabel": "00:41"
   }
 ];
 const tracks = [
+  {
+    "id": "3a9",
+    "title": "Ω",
+    "filename": "Ω.mp3",
+    "category": "track",
+    "publishedAt": "2023-01-01",
+    "zh": {
+      "note": "夜，拂晓，东云，日出，晴"
+    },
+    "en": {
+      "note": "Night, daybreak, clouds in the east, sunrise, clear skies."
+    },
+    "photos": [
+      {
+        "src": "assets/content/track/3a9/01.jpg",
+        "caption": "IMG_5509"
+      }
+    ],
+    "cover": "assets/content/track/3a9/01.jpg",
+    "audio": "https://audio.aimaradio.com/track/%CE%A9.mp3",
+    "durationSeconds": 155,
+    "durationLabel": "02:35",
+    "sizeBytes": 6185713,
+    "sizeLabel": "5.9 MB",
+    "bitrateKbps": 320,
+    "tags": {}
+  },
   {
     "id": "obeta",
     "title": "Oβ",

@@ -122,13 +122,20 @@ const demos = readdirSync('opt/demo', { withFileTypes: true }).filter(entry => e
 }).sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
 const trackRoot = 'opt/track';
-const tracks = readdirSync(trackRoot).filter(file => audioExtensions.has(extname(file).toLowerCase())).map(file => {
-  const path = join(trackRoot, file);
+const trackSources = readdirSync(trackRoot, { withFileTypes: true }).flatMap(entry => {
+  if (entry.isDirectory()) {
+    const directory = join(trackRoot, entry.name);
+    return readdirSync(directory).filter(file => audioExtensions.has(extname(file).toLowerCase())).map(file => ({ directory, file }));
+  }
+  return audioExtensions.has(extname(entry.name).toLowerCase()) ? [{ directory: trackRoot, file: entry.name }] : [];
+});
+const tracks = trackSources.map(({ directory, file }) => {
+  const path = join(directory, file);
   const title = basename(file, extname(file));
   const id = slug(title);
-  const photos = exportPhotos(trackRoot, 'track', id);
-  const zhNote = existsSync(join(trackRoot, 'doc.txt')) ? readFileSync(join(trackRoot, 'doc.txt'), 'utf8').trim() : '';
-  const enNote = existsSync(join(trackRoot, 'doc.en.txt')) ? readFileSync(join(trackRoot, 'doc.en.txt'), 'utf8').trim() : '';
+  const photos = exportPhotos(directory, 'track', id);
+  const zhNote = existsSync(join(directory, 'doc.txt')) ? readFileSync(join(directory, 'doc.txt'), 'utf8').trim() : '';
+  const enNote = existsSync(join(directory, 'doc.en.txt')) ? readFileSync(join(directory, 'doc.en.txt'), 'utf8').trim() : '';
   return {
     id, title, filename: file, category: 'track', publishedAt: fileDate(path),
     zh: { note: zhNote }, en: { note: enNote }, photos, cover: photos[0]?.src || '',

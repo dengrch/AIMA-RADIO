@@ -135,11 +135,15 @@ function createDemoGraphic(entry) {
   const graphic = document.createElement('span'); graphic.className = 'entry-graphic demo-graphic'; graphic.setAttribute('aria-hidden', 'true');
   const random = seededRandom(entry.id);
   const versions = entry.versions.slice(-4);
+  graphic.style.setProperty('--trunk-x', `${(28 + random() * 12).toFixed(1)}%`);
+  const start = 20 + random() * 10;
+  const spacing = 14 + random() * 4;
+  const branchScale = .8 + random() * .35;
   versions.forEach((_, index) => {
     const node = document.createElement('i');
-    node.style.setProperty('--node-y', `${22 + index * 18}%`);
-    node.style.setProperty('--branch-length', `${((30 + index * 6 + (random() - .5) * 4) / 116 * 100).toFixed(2)}cqw`);
-    node.style.setProperty('--branch-angle', `${((index - 1) * 5 + (random() - .5) * 2).toFixed(1)}deg`);
+    node.style.setProperty('--node-y', `${(start + index * spacing + (random() - .5) * 3).toFixed(1)}%`);
+    node.style.setProperty('--branch-length', `${(((30 + index * 6) * branchScale + (random() - .5) * 10) / 116 * 100).toFixed(2)}cqw`);
+    node.style.setProperty('--branch-angle', `${((index - 1) * 4 + (random() - .5) * 14).toFixed(1)}deg`);
     graphic.append(node);
   });
   return graphic;
@@ -176,9 +180,11 @@ function observeReveals(root = document) {
   root.querySelectorAll('.reveal:not(.is-visible)').forEach(node => observer.observe(node));
 }
 
-function renderHomeNews() {
+function renderHomeNews(append = false) {
   const entries = allEntries();
-  const list = $('#home-news-list'); list.replaceChildren(...entries.slice(0, homeVisibleCount).map(newsCard));
+  const list = $('#home-news-list'); const cards = entries.slice(0, homeVisibleCount);
+  if (append) list.append(...cards.slice(list.children.length).map(newsCard));
+  else list.replaceChildren(...cards.map(newsCard));
   $('#load-more').hidden = homeVisibleCount >= entries.length;
   observeReveals(list);
 }
@@ -244,10 +250,15 @@ function paintProgress(value) {
 }
 
 function renderCharacterProgress(value = Number(seek.value)) {
-  const track = $('#progress-text'); const units = Math.max(2, Math.floor(track.clientWidth / 10));
-  const cursor = Math.round(Math.max(0, Math.min(100, value)) / 100 * (units - 1));
-  if (track.children.length !== units) track.replaceChildren(...Array.from({ length: units }, () => document.createElement('span')));
-  [...track.children].forEach((cell, index) => { cell.textContent = index === cursor ? '█' : '░'; });
+  const track = $('#progress-text');
+  const ratio = Number.isFinite(value) ? Math.max(0, Math.min(100, value)) / 100 : 0;
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  context.font = '14px "Fragment Mono", monospace';
+  const cellWidth = context.measureText('░').width + .7;
+  const units = Math.max(1, Math.floor(track.clientWidth / cellWidth));
+  const cursor = Math.round(ratio * (units - 1));
+  track.textContent = '░'.repeat(cursor) + '█' + '░'.repeat(units - cursor - 1);
 }
 
 function setNowPlaying(kind, title, href, playing) {
@@ -367,7 +378,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 window.addEventListener('resize', updateScrollContext);
 
-$('#load-more').addEventListener('click', () => { homeVisibleCount += 5; renderHomeNews(); });
+$('#load-more').addEventListener('click', () => { homeVisibleCount += 5; renderHomeNews(true); });
 $('#recommendation-prev').addEventListener('click', () => goRecommendation(-1));
 $('#recommendation-next').addEventListener('click', () => goRecommendation(1));
 $('#recommendation-track').addEventListener('scroll', event => {
