@@ -459,6 +459,7 @@ $$('[data-lang]').forEach(button => button.addEventListener('click', () => {
   });
 }));
 $$('[data-theme]').forEach(button => button.addEventListener('click', () => {
+  document.documentElement.dataset.theme = button.dataset.theme;
   document.body.dataset.theme = button.dataset.theme; $$('[data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node === button)));
   document.querySelector('meta[name="theme-color"]').content = button.dataset.theme === 'dark' ? '#000000' : '#f8f9f7';
 }));

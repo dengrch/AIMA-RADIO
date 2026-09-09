@@ -9,7 +9,8 @@
   --page: min(1280px, calc(100% - 8vw));
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--bg); color-scheme: light; }
+html[data-theme="dark"] { --bg: #000; color-scheme: dark; }
 body { min-height: 100svh; margin: 0; color: var(--ink); background: var(--bg); font-family: var(--body); font-size: 15px; font-weight: 400; letter-spacing: .08em; line-height: 2.1; }
 body[data-theme="dark"] { --bg:#000; --ink:rgba(248,248,248,.91); --soft:rgba(248,248,248,.62); --dim:rgba(248,248,248,.4); --line:rgba(248,248,248,.2); }
 [hidden] { display: none !important; }
