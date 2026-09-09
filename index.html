@@ -6,15 +6,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="合間電台 aima Radio — Ambient Improvisation, Memory &amp; Art. 即兴演奏、原创 demo、成曲与生活记录。">
-  <meta name="theme-color" content="#f8f9f7">
   <script>
     try {
       const theme = localStorage.getItem('aima-theme');
       if (theme === 'dark' || theme === 'light') {
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.backgroundColor = theme === 'dark' ? '#000000' : '#f8f9f7';
-        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#000000' : '#f8f9f7';
       }
+      const themeMeta = document.createElement('meta');
+      themeMeta.name = 'theme-color';
+      themeMeta.content = theme === 'dark' ? '#000000' : '#f8f9f7';
+      document.head.append(themeMeta);
     } catch {}
   </script>
   <title>aima Radio</title>
