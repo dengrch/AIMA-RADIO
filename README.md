@@ -5,7 +5,7 @@
 
 ## 本地预览
 
-运行 `node tools/serve.mjs`，打开 http://127.0.0.1:4173。
+运行 `node tools/serve.mjs`，打开 http://127.0.0.1:4134。
 
 ## 新增内容
 
