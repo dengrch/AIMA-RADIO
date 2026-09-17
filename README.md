@@ -26,5 +26,6 @@
 ## 发布
 
 `node tools/build.mjs` 生成 `_site/`，只包含站点文件与图片、视频等公开资源，排除音频目录。
+构建时按文件内容自动生成 `content.js`、`script.js` 和 `styles.css` 的版本参数；更新内容后无需手动改版本号或要求读者清缓存。本地预览服务禁用缓存。
 推送 `main` 会触发 `.github/workflows/jekyll-gh-pages.yml` 部署到 GitHub Pages。
 Pages 设置应选择 **GitHub Actions**。
