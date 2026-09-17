@@ -1153,6 +1153,50 @@ const tracks = [
 ];
 const notes = [
   {
+    "id": "4e66-8bc4-20-54c1-9274-300a-540d-4fa6-63a2-7684-732e-796d-300b",
+    "category": "note",
+    "publishedAt": "2026-09-18",
+    "zh": {
+      "title": "奇迹存在吗",
+      "heading": "——品鉴《名侦探的献祭》",
+      "body": [
+        "这本读完有相当久了\n最近将最后的解答部分又重溜了一遍\n然后把「推心置理」的老节目补了一下\n总之就是白井实在是太nb了必须写个读后感",
+        "白井老师的正道神作\n对我一个其实并没有那么喜欢看小说的人来说\n白井的长篇虽然中段依旧有点难熬 不过好在持续时间并不长 尤其是回过头来看 竟然完全不觉得这是长篇作品\n因为其伏线铺设的密度实在是太高了 \n整个故事的结构极为精密 以至于几乎每一个推理都做到超长链条的同时 还能一个接着一个到来",
+        "伪解答的推理\n在足以推翻伪解答的新线索给出之前就给出的足以反驳伪解答的推理\n多种立场下的真解答的推理\n大小案件的推理间的逻辑映射",
+        "这种频繁的逻辑链解构的过程实在是美妙\n前半本被伏线淹没 后半本被逻辑链淹没\n其中居然还能生长出这样一个故事\n故事中居然还能生长出一丝丝潜在的人物塑造",
+        "「奇迹存在吗」\n本作中白井老师依旧完成了某种推理边界的探索\n通过某种“浅设定”将对读者而言陌生而不影响公平性观感的认知层面的因素 编织成了某种“二选一”的推理结构\n并且通过“某个操作”将这种推理本身变成了某种工具 某种武器 或者说是凶器与庇护本身！",
+        "最令我感到震撼的 果然还是最后的动机了\n在最最后短短几页纸里 这样的一个动机 可以说是“轰然”地出现 在一瞬间对“整本书”实现完全的收束与升华\n一行文字所带来的五雷轰顶般的震撼 居然可以完全不通过谜题的叙诡反转 也不通过人物的爱恨情仇\n单纯通过一个动机 就能做到这一切 并且和全文稀烂的文笔下一以贯之而暗暗涌动的情感是那么的匹配 实在是令人久久不能平静",
+        "其实也已经读过白井相当多短篇的作品了，作为半个白井小子，对于现有的很多白井黑子的评价我觉得其实是很有道理的。。白井最大的问题就是其奇想性与猎奇性（这本没有）的要素往往会过分侵入读者对于核心诡计本身的震撼体验与判断，同时也一定程度掩盖了推理构建的公平性问题。越是存在特殊设定，设定越是异色或者复杂，“卧槽🤯”和“我chovy😡”的边界就越是模糊，就越是考验推理作家的技巧性功底。好在我是能够几乎全部地接收到白井诸多优点的读者，尤其是他对推理结构的各种设计和量大管饱的推理篇幅 都很戳我一个反阅读爱好者的爽点，并且说正逐渐激活某种创作的欲望也不为过的程度。。。"
+      ],
+      "date": "2026.09.18"
+    },
+    "en": {
+      "title": "Do Miracles Exist?",
+      "heading": "— Reading The Great Detective’s Sacrifice",
+      "body": [
+        "It’s been quite a while since I finished this one.\nRecently I went back through the final explanation,\nthen caught up on an old episode of the mystery podcast Tuixin Zhili.\nAnyway, Shirai is just so fucking good that I had to write something about it.",
+        "A masterpiece of straight-up mystery from Shirai.\nAs someone who doesn’t actually enjoy reading novels all that much,\nI still find the middle stretches of his full-length novels a little hard to get through. Thankfully, they don’t last long. Looking back, this one barely even feels like a full-length novel.\nThe foreshadowing is just that dense.\nThe whole story is constructed with such precision that almost every deduction follows an extraordinarily long chain of reasoning, yet they still keep coming, one after another.",
+        "The reasoning behind the false solution.\nThe reasoning that already disproves it, offered before the new clues that would overturn it even appear.\nThe reasoning behind the true solution from multiple standpoints.\nThe logical correspondences between deductions in the larger and smaller cases.",
+        "There’s something wonderful about watching these chains of reasoning being taken apart so often.\nThe first half buries you in foreshadowing; the second half buries you in logic.\nAnd somehow, a story can still grow out of all that.\nAnd somehow, within that story, even the faintest hints of characterization can take root.",
+        "“Do miracles exist?”\nOnce again, Shirai manages to explore a boundary of what deduction can do.\nThrough a lightly sketched invented premise, he weaves elements of cognition that are unfamiliar to the reader, yet don’t feel unfair, into a kind of “either/or” deductive structure.\nThen, through a certain maneuver, he turns that reasoning itself into a tool, a weapon—or even the murder weapon and the refuge themselves!",
+        "What shook me most, of course, was the final motive.\nIn just those few pages at the very end, this motive arrives with an almost audible crash, drawing the entire book together and lifting it to another level in a single instant.\nOne line of text can hit like a thunderbolt, without a narrative trick that turns the puzzle on its head, without the characters’ tangled loves and hatreds.\nA motive alone can do all of this. And it fits so perfectly with the emotional undercurrent that runs quietly through the book’s consistently lousy prose. I couldn’t shake it for a long time.",
+        "I’ve actually read quite a few of Shirai’s short stories by now. As something of a Shirai fanboy, I honestly think a lot of what his detractors say makes sense... His biggest problem is that the outlandish ideas and grotesquerie (absent from this book) often intrude too much on the reader’s experience of the central trick—both its impact and the judgment of it—while also obscuring, to some extent, questions about whether the reasoning plays fair. The more a story relies on special premises, and the stranger or more complicated those premises become, the blurrier the line between “holy shit 🤯” and “what the actual fuck 😡,” and the more it tests the mystery writer’s technical chops. Luckily, I’m the kind of reader who responds to almost all of Shirai’s strengths. His experiments with deductive structure, in particular, and the sheer, generous quantity of reasoning hit exactly the right spot for a reading-averse person like me. It wouldn’t even be an exaggeration to say they’re gradually awakening some urge to create things of my own..."
+      ],
+      "date": "18 Sep 2026"
+    },
+    "photos": [
+      {
+        "src": "assets/content/note/4e66-8bc4-20-54c1-9274-300a-540d-4fa6-63a2-7684-732e-796d-300b/01.jpg",
+        "caption": "名侦探的献祭1"
+      },
+      {
+        "src": "assets/content/note/4e66-8bc4-20-54c1-9274-300a-540d-4fa6-63a2-7684-732e-796d-300b/02.jpg",
+        "caption": "名侦探的献祭2"
+      }
+    ],
+    "cover": "assets/content/note/4e66-8bc4-20-54c1-9274-300a-540d-4fa6-63a2-7684-732e-796d-300b/01.jpg"
+  },
+  {
     "id": "4e66-8bc4-20-54c1-9274-300a-65e0-4eba-901d-53bb-300b",
     "category": "note",
     "publishedAt": "2025-11-14",
