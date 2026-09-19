@@ -9,14 +9,16 @@
   <meta id="safari-theme-color" name="theme-color" content="#f8f9f7">
   <meta name="description" content="合間電台 aima Radio — Ambient Improvisation, Memory &amp; Art. 即兴演奏、原创 demo、成曲与生活记录。">
   <script>
-    try {
-      const theme = localStorage.getItem('aima-theme');
-      const activeTheme = theme === 'dark' ? 'dark' : 'light';
+    (() => {
+      let activeTheme = 'light';
+      try { activeTheme = localStorage.getItem('aima-theme') === 'dark' ? 'dark' : 'light'; } catch {}
       const backgroundColor = activeTheme === 'dark' ? '#000000' : '#f8f9f7';
+      // Paint the canvas before changing browser appearance or loading CSS.
+      document.documentElement.style.backgroundColor = backgroundColor;
       document.documentElement.dataset.theme = activeTheme;
       document.documentElement.style.colorScheme = activeTheme;
       document.querySelector('#safari-theme-color').setAttribute('content', backgroundColor);
-    } catch {}
+    })();
   </script>
   <title>aima Radio</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">

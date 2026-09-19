@@ -1,4 +1,38 @@
-# Safari theme tint — revision 20260910-28
+# Safari theme tint
+
+## 2026-09-19 — explicit root canvas (iOS 27 report)
+
+The user reports a stale black status area after dark → light in iOS 27 Safari.
+Revision 28's header filter is already present; do not assume moving that filter
+again or changing only `theme-color` resolves this report.
+
+The root previously remained transparent and relied on body background propagation.
+It now paints the active background explicitly. The head bootstrap sets that
+color before changing `color-scheme` and before loading CSS. The same assignment
+is made on theme changes. Storage failures still initialize the light canvas.
+Theme variables now belong only to `html`, so the body and glass surfaces inherit
+one theme rather than maintaining a second body override.
+
+This addresses canvas initialization and synchronization, not a demonstrated fix
+to Safari's internal fixed-edge color cache. Keep the existing sticky header's
+translucency, backdrop filter and safe-area padding. Do not force page reloads,
+replace navigation nodes, or interrupt audio to refresh browser chrome.
+
+Validation: build and JavaScript syntax checks passed. The bootstrap was checked
+with light, dark, invalid and unavailable storage. Safari 26.6.2 WebDriver passed
+16 theme switches at requested 402px/1200px window widths, at scroll positions
+0/650px: root/body colors agree, header blur remains, sticky positioning and
+scroll position remain stable, audio node identities are retained, and saved-dark
+reload works. Desktop window sizing is not iPhone emulation.
+
+The host has desktop Safari 26.6.2, but no usable iOS 27 simulator. Computed styles
+and desktop browser checks cannot establish that the iPhone status area updates.
+Final acceptance remains on the reported device: fresh load, light → dark → light
+at the top and after scrolling, saved-dark reload then light, and switches during
+audio playback. Check the status area's color as well as the header blur. Website
+CSS does not directly control the native status bar's blur.
+
+## Historical revision 20260910-28
 
 The previous revision (27) is confirmed deployed at aimaradio.com. Its computed
 CSS changed correctly, but that never established that Safari's chrome updated.

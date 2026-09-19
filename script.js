@@ -465,11 +465,14 @@ $$('[data-lang]').forEach(button => button.addEventListener('click', () => {
   });
 }));
 function applyTheme(theme) {
+  theme = theme === 'dark' ? 'dark' : 'light';
   const backgroundColor = theme === 'dark' ? '#000000' : '#f8f9f7';
 
+  // Keep Safari's extended canvas in sync with the pre-stylesheet first paint.
+  // The root owns the theme; body and the glass header inherit its variables.
+  document.documentElement.style.backgroundColor = backgroundColor;
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
-  document.body.dataset.theme = theme;
   $$('.theme-switch [data-theme]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.theme === theme)));
   // Compatibility for browsers that honor theme-color; not a Safari repaint API.
   $('#safari-theme-color').setAttribute('content', backgroundColor);
