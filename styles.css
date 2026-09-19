@@ -7,6 +7,8 @@
   --system: "STIX Two Text", "Songti TC", "Hiragino Mincho ProN", "Yu Mincho", "Times New Roman", serif;
   --display: Didot, "Bodoni 72", "STIX Two Text", serif;
   --page: min(1280px, calc(100% - 8vw));
+  --top-edge-height: 11px;
+  --top-edge-fade: 40px;
 }
 * { box-sizing: border-box; }
 html, body { min-height: 100%; }
@@ -244,30 +246,37 @@ main { padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-are
   .sound-status { bottom: calc(.6rem + env(safe-area-inset-bottom, 0px)); right: max(.7rem, env(safe-area-inset-right, 0px)); }
 }
 
-/* Independent opaque edge, narrowed to 4px at the user's request for device
-   testing. The previously confirmed strip was 12px. See docs/safari-tint.md. */
+/* Device-tested minimum: 10px fails/is unstable, 11px follows the theme.
+   Keep this opaque and outside the filtered header. See docs/safari-tint.md. */
 .safari-top-edge {
   position: fixed;
   z-index: 11;
   inset: 0 0 auto;
-  height: 11px;
+  height: var(--top-edge-height);
   background-color: var(--bg);
   pointer-events: none;
 }
-/* Keep the sampling surface solid; fade only BELOW it into the existing glass. */
-.safari-top-edge::after {
+/* Fade inside the header's stacking context, above its glass background but
+   below its controls. The independent opaque sampling strip stays untouched. */
+.site-head::before {
   content: "";
   position: absolute;
-  top: 100%;
+  z-index: -1;
+  pointer-events: none;
+  top: var(--top-edge-height);
   left: 0;
   right: 0;
-  height: 12px;
+  height: var(--top-edge-fade);
   background: linear-gradient(to bottom, var(--bg), transparent);
-  /* Fade most of the extra tint early, with a gentle transparent tail. */
+  /* Smoothstep falloff: gentle at both ends, with no abrupt initial fade. */
   background: linear-gradient(to bottom,
     var(--bg) 0%,
-    color-mix(in srgb, var(--bg) 56%, transparent) 25%,
-    color-mix(in srgb, var(--bg) 25%, transparent) 50%,
-    color-mix(in srgb, var(--bg) 6%, transparent) 75%,
+    color-mix(in srgb, var(--bg) 96%, transparent) 12.5%,
+    color-mix(in srgb, var(--bg) 84%, transparent) 25%,
+    color-mix(in srgb, var(--bg) 68%, transparent) 37.5%,
+    color-mix(in srgb, var(--bg) 50%, transparent) 50%,
+    color-mix(in srgb, var(--bg) 32%, transparent) 62.5%,
+    color-mix(in srgb, var(--bg) 16%, transparent) 75%,
+    color-mix(in srgb, var(--bg) 4%, transparent) 87.5%,
     transparent 100%);
 }

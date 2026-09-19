@@ -6,18 +6,24 @@ The user confirmed on their iOS 27 iPhone that both the opaque-edge and
 opaque-edge-plus-gradient variants make the native top area follow theme changes.
 They selected the gradient version as the default and requested more visible glass.
 
-At the user's latest request, the opaque strip is now 4px and the fade beneath
-it is 12px, ending 16px from the viewport top. The fade uses alpha stops of
-100%, 56%, 25%, 6%, 0% at evenly spaced positions, approximating a quadratic
-falloff to reveal the glass sooner and soften the tail. A linear fallback is
-provided for browsers without color-mix. This 4px version awaits the user's
-device test; only the earlier 12px strip + 20px fade was explicitly confirmed.
+The user's latest device tests found 4px fails, 10px fails/is unstable, and 11px
+works. The user has set the opaque strip to 11px; preserve that tested value.
+The user found the short fade harsh and requested a more generous transition.
+The new fade is 40px, ending 51px from the viewport top. It uses alpha stops of
+100%, 96%, 84%, 68%, 50%, 32%, 16%, 4%, 0% at evenly spaced positions, approximating
+smoothstep with gentle slopes at both ends. A linear fallback is provided for
+browsers without color-mix. `--top-edge-height` and `--top-edge-fade` in :root
+control the two dimensions. The 11px minimum is evidence from this
+device, not a cross-version browser guarantee. Keep 12px as the known-good fallback.
 
 `.safari-top-edge` is a fixed body child above the sticky header, separate from
-its backdrop-filter. It has an opaque `background-color: var(--bg)` and a fading
-pseudo-element below it. It has no layout footprint, is hidden from accessibility,
-and does not intercept taps. Header controls, glass, scrolling and playback are
-unchanged. The theme color comes from the same root variables as the page.
+its backdrop-filter. It has an opaque `background-color: var(--bg)`. The fade now
+lives on `.site-head::before` with z-index -1, inside the header's stacking context:
+above its glass background but below its controls. This prevents a longer fade
+from washing out text, unlike the previous sibling overlay. The opaque sampling
+strip remains separate and unchanged. Both layers have no layout footprint and
+do not intercept taps. The theme color comes from the same root variables as the
+page. This longer fade and layer adjustment still need user visual acceptance.
 
 There are no diagnostic query switches or alternate page modes anymore.
 Old `?safari-test=...` URLs simply render the standard page.
@@ -25,16 +31,20 @@ Old `?safari-test=...` URLs simply render the standard page.
 Previous 12px-strip finalization checks: build, JavaScript syntax and diff whitespace checks passed.
 Desktop Safari verified the default URL and all five old query variants in both
 themes: each has the sticky blurred header, a 12px opaque edge and a 12px fade.
-This checks the implementation; the shortened fade's appearance has not yet
-been rechecked on the user's iPhone.
+These were implementation checks. The subsequent user tests establish native
+theme following at 11px on their iPhone.
 
 The selected visual compromise is a native solid status-area tint blending
 into the site's glass navigation. It does not make the native status area render
-our custom backdrop filter. Keep the strip outside the filtered header. The user
-explicitly authorized trying 4px and will test it. If native tint stops updating,
-restore the known-good 12px strip before investigating other changes.
+our custom backdrop filter. Keep the strip outside the filtered header. Do not
+shrink the strip to <=10px again. If native tint stops updating in other browser
+states, restore the known-good 12px strip before investigating other changes.
 
 ## Device evidence and failed approaches
+
+- 4px opaque strip: fails.
+- 10px opaque strip: fails/is unstable.
+- 11px opaque strip: follows theme; current selected minimum on the user's device.
 
 - Ordinary non-sticky glass header: native top color follows theme; navigation
   scrolls away, so this does not meet the desired behavior.
