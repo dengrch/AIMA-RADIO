@@ -1,6 +1,73 @@
 # Safari theme tint
 
+## Reference comparison and opt-in device checks
+
+The user confirms that https://dany.works changes the native top area's color on
+the same phone. Source fetched again for this investigation uses `body.light`
+and typed `@property --bg` with a 400ms transition. It has no theme-color or
+color-scheme metadata, no viewport-fit=cover, and no equivalent full-width sticky
+glass header. It does have fixed decorative overlays and desktop controls;
+do not generalize this into "all fixed elements break tint". The earlier root
+canvas change is not an implementation of this reference's full structure.
+
+The current diagnostic change adds three query-selected variants to the actual
+site, applied in the head before first paint. No parameter means normal behavior:
+
+- `?safari-test=glass`: existing sticky translucent/blurred header (control).
+- `?safari-test=flow`: same header, only position changes to relative.
+- `?safari-test=solid`: same sticky header, opaque theme background, no blur.
+
+After deploying the diagnostic change, open each variant separately on the
+affected iPhone, switch dark then light without reloading, and compare the native
+status area. Reloads between variants are intentional to avoid native tint carryover.
+The flow case should also be checked after scrolling: its header leaves the screen.
+Do not change theme persistence, root background, safe-area geometry or animation
+at the same time. If flow also fails, the header-only explanation is insufficient;
+then isolate the reference's body canvas/transition and viewport settings.
+These are diagnostic variants, not a validated fix. Nothing is uploaded by them.
+
+## Required visual outcome and directly relevant upstream report
+
+The user wants the same translucent navigation surface, including blurred content
+behind it, to continue into the status/Dynamic Island area. Merely replacing a
+black strip with a light solid strip does not meet this requirement.
+
+https://bugs.webkit.org/show_bug.cgi?id=301108 tracks viewport-fit=cover and blur
+overlays not covering browser-obscured areas. Comment 4 specifically reports a
+header updating on a website theme toggle while the browser's top area retains
+the previous color until reload. This is a close symptom match, not proof that
+the same WebKit defect persists in the user's iOS 27 build.
+
+https://bugs.webkit.org/show_bug.cgi?id=300965#c32 explains a related browser-side
+fix as extending solid color into the top/bottom browser areas, not extending
+the original overlay and its backdrop filter. The distinction explains why
+ordinary content visible behind browser UI does not establish that a sticky
+glass layer can paint that area identically.
+
+The site already has viewport-fit=cover, safe-area padding and a backdrop filter
+on the sticky header. Do not propose those existing settings again as a new fix.
+Do not promise that negative offsets, larger overlays, replacing sticky with
+fixed, or a nested scroll container will cross browser compositor clipping;
+each would require affected-device evidence. Removing the sticky header is a
+useful control case but would sacrifice requested behavior, not fulfill it.
+
 ## 2026-09-19 — explicit root canvas (iOS 27 report)
+
+**Device feedback: this candidate did not fix the reported issue.** The user
+confirmed that the status area still does not follow theme changes. A subsequent
+fetch of https://aimaradio.com/ includes the explicit root canvas bootstrap and
+asset hashes `styles.css?v=e0a87cfda1ea538f` and
+`script.js?v=d7af54a7964d6df5`, matching local commit `d778230`. The current server
+is serving this candidate; do not repeat it or dismiss the report as an undeployed
+change. This does not inspect the device's own cache, but there is no evidence to
+blame that cache.
+
+Next investigation must isolate the native status-area behavior on the affected
+device: compare normal-flow, sticky opaque, and sticky translucent/blurred headers
+with identical theme handling, loading each variant separately to avoid carrying
+native tint state between variants. Desktop computed-style checks are regression
+checks only. A sticky-header sampling/cache issue remains a hypothesis, not an
+established diagnosis of this iOS 27 report.
 
 The user reports a stale black status area after dark → light in iOS 27 Safari.
 Revision 28's header filter is already present; do not assume moving that filter
