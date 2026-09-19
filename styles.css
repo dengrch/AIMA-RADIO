@@ -244,32 +244,30 @@ main { padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-are
   .sound-status { bottom: calc(.6rem + env(safe-area-inset-bottom, 0px)); right: max(.7rem, env(safe-area-inset-right, 0px)); }
 }
 
-/* Diagnostic URLs only. Keep theme logic and geometry identical across cases.
-   Load each URL separately: switching styles in place can retain native tint. */
-html[data-safari-test="flow"] .site-head { position: relative; }
-html[data-safari-test="solid"] .site-head { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
-
-/* A real, opaque surface outside the filtered header. WebKit's current color
-   path skips boxes <= 10px tall; a 1px border/old 4px probe is not equivalent.
-   This is an opt-in workaround until tested on the affected iPhone. */
-.safari-top-edge { display: none; }
-html[data-safari-test="edge"] .safari-top-edge,
-html[data-safari-test="feather"] .safari-top-edge {
-  display: block;
+/* Independent opaque edge, narrowed to 4px at the user's request for device
+   testing. The previously confirmed strip was 12px. See docs/safari-tint.md. */
+.safari-top-edge {
   position: fixed;
   z-index: 11;
   inset: 0 0 auto;
-  height: 12px;
+  height: 4px;
   background-color: var(--bg);
   pointer-events: none;
 }
 /* Keep the sampling surface solid; fade only BELOW it into the existing glass. */
-html[data-safari-test="feather"] .safari-top-edge::after {
+.safari-top-edge::after {
   content: "";
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  height: 20px;
+  height: 12px;
   background: linear-gradient(to bottom, var(--bg), transparent);
+  /* Fade most of the extra tint early, with a gentle transparent tail. */
+  background: linear-gradient(to bottom,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--bg) 56%, transparent) 25%,
+    color-mix(in srgb, var(--bg) 25%, transparent) 50%,
+    color-mix(in srgb, var(--bg) 6%, transparent) 75%,
+    transparent 100%);
 }

@@ -10,11 +10,6 @@
   <meta name="description" content="合間電台 aima Radio — Ambient Improvisation, Memory &amp; Art. 即兴演奏、原创 demo、成曲与生活记录。">
   <script>
     (() => {
-      // Opt-in comparisons on the real page; select before Safari's first paint.
-      const safariTest = new URLSearchParams(location.search).get('safari-test');
-      if (['flow', 'solid', 'glass', 'edge', 'feather'].includes(safariTest)) {
-        document.documentElement.dataset.safariTest = safariTest;
-      }
       let activeTheme = 'light';
       try { activeTheme = localStorage.getItem('aima-theme') === 'dark' ? 'dark' : 'light'; } catch {}
       const backgroundColor = activeTheme === 'dark' ? '#000000' : '#f8f9f7';
