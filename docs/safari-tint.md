@@ -1,5 +1,32 @@
 # Safari theme tint
 
+## Device results and opaque-edge candidate
+
+User's affected-device comparison: `flow` follows theme, `solid` follows theme,
+`glass` does not. This narrows the failure to the sticky translucent/filter case;
+it does not establish which internal WebKit cache or compositor path is failing.
+The user proposes a solid edge or a transition from solid to glass.
+
+Two new opt-in variants preserve the existing sticky glass header:
+
+- `?safari-test=edge`: separate, fixed 12px opaque theme-colored strip at the top.
+- `?safari-test=feather`: the same strip plus a 20px fade below it onto the glass.
+
+The strip is a body child, not a child of the filtered header, has no backdrop
+filter, does not intercept taps, and has no layout footprint. It covers part of
+the header's existing top padding. The gradient is below the opaque strip rather
+than replacing its background-color. Default and earlier diagnostic modes hide it.
+This deliberately aims for native SOLID status-area tint with a smooth transition
+into a glass navigation bar, not true custom blur inside native browser chrome.
+
+Source rationale: current WebKit LocalFrameView::fixedContainerEdges samples
+near the edge (4px inset) and primaryBackgroundColorForRenderer skips boxes whose
+width or height is <=10px. A 12px opaque box is different from the historical 4px
+probe and from a thin CSS border. Source-main behavior is not proof of the exact
+implementation shipped in the user's iOS 27. Device acceptance is still required:
+fresh load for each mode, repeated theme changes without reload, scrolling,
+toolbar expansion/collapse, and checking both color updates and visual seams.
+
 ## Reference comparison and opt-in device checks
 
 The user confirms that https://dany.works changes the native top area's color on

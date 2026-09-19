@@ -12,7 +12,7 @@
     (() => {
       // Opt-in comparisons on the real page; select before Safari's first paint.
       const safariTest = new URLSearchParams(location.search).get('safari-test');
-      if (['flow', 'solid', 'glass'].includes(safariTest)) {
+      if (['flow', 'solid', 'glass', 'edge', 'feather'].includes(safariTest)) {
         document.documentElement.dataset.safariTest = safariTest;
       }
       let activeTheme = 'light';
@@ -32,6 +32,7 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="safari-top-edge" aria-hidden="true"></div>
   <a class="skip-link" href="#main">跳至内容 / Skip to content</a>
   <header class="site-head" id="top">
     <h1 class="brand"><a id="site-title" href="#main" aria-label="aima — home"><span class="title-aima">aima</span></a><span id="brand-context" class="brand-context">Radio</span></h1>
