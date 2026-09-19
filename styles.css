@@ -250,7 +250,7 @@ main { padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-are
   position: fixed;
   z-index: 11;
   inset: 0 0 auto;
-  height: 4px;
+  height: 6px;
   background-color: var(--bg);
   pointer-events: none;
 }
